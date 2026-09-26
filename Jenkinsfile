@@ -1,10 +1,11 @@
 pipeline {
     agent any
 
-    environment {
-        BACKEND_IMAGE = "nutriflow-backend:latest"
-        FRONTEND_IMAGE = "nutriflow-frontend:latest"
-    }
+environment {
+    BACKEND_IMAGE = "nutriflow-backend:latest"
+    FRONTEND_IMAGE = "nutriflow-frontend:latest"
+    MINIKUBE_HOME = "/home/ubuntu/.minikube"
+}
 
     stages {
 
