@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nutriflow-frontend
+  labels:
+    app: nutriflow-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nutriflow-frontend
+  template:
+    metadata:
+      labels:
+        app: nutriflow-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: nutriflow-frontend:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80

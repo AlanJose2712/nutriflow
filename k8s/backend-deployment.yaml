@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nutriflow-backend
+  labels:
+    app: nutriflow-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nutriflow-backend
+  template:
+    metadata:
+      labels:
+        app: nutriflow-backend
+    spec:
+      containers:
+        - name: backend
+          image: nutriflow-backend:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - secretRef:
+                name: nutriflow-secrets
+          readinessProbe:
+            httpGet:
+              path: /nutriflow
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /nutriflow
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 20
