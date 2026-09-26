@@ -37,7 +37,7 @@ stage('SonarQube Analysis') {
         script {
             echo "Running SonarQube analysis..."
 
-            def scannerHome = tool 'SonarScanner'
+            def scannerHome = tool 'sonarscanner'
 
             withSonarQubeEnv('sonarqube') {
                 sh """
