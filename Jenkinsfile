@@ -45,7 +45,7 @@ stage('SonarQube Analysis') {
                         -Dsonar.projectKey=nutriflow \
                         -Dsonar.projectName="NutriFlow" \
                         -Dsonar.sources=frontend/src,backend \
-                        -Dsonar.exclusions="**/node_modules/**,**/dist/**,**/build/**,**/coverage/**
+                        -Dsonar.exclusions="**/node_modules/**,**/dist/**,**/build/**,**/coverage/**"
                 """
             }
         }
