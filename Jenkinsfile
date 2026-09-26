@@ -37,13 +37,13 @@ stage('SonarQube Analysis') {
         script {
             echo "Running SonarQube analysis..."
 
-            def scannerHome = tool 'sonarscanner'
+           def scannerHome = tool 'SonarScanner'
 
             withSonarQubeEnv('sonarqube') {
                 sh """
                     ${scannerHome}/bin/sonar-scanner \
-                        -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
-                        -Dsonar.projectName="${SONAR_PROJECT_NAME}" \
+                        -Dsonar.projectKey=\\$SONAR_PROJECT_KEY \
+                        -Dsonar.projectName="\\$SONAR_PROJECT_NAME" \
                         -Dsonar.sources=frontend/src,backend \
                         -Dsonar.exclusions="**/node_modules/**,**/dist/**,**/build/**,**/coverage/**"
                 """
